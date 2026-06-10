@@ -1,0 +1,27 @@
+# Copy this file to config.py, or copy .env.example to .env
+
+# Credentials
+OPENAI_API_KEY = "..."                      # OpenAI API key
+
+# Robinhood MCP (official Agentic Trading server)
+ROBINHOOD_MCP_URL = "https://agent.robinhood.com/mcp/trading"
+ROBINHOOD_MCP_TOKEN_PATH = ".robinhood_mcp_tokens.json"  # OAuth token cache (created on first login)
+ROBINHOOD_AGENTIC_ACCOUNT_NUMBER = ""       # Agentic account number from get_accounts (agentic_allowed=true)
+
+# Basic config parameters
+MODE = "demo"                               # Trading mode (demo, auto, manual)
+LOG_LEVEL = "INFO"                          # Log level (DEBUG, INFO, WARNING, ERROR)
+RUN_INTERVAL_SECONDS = 600                  # Trading interval in seconds (if the market is open)
+
+# Robinhood config parameters
+TRADE_EXCEPTIONS = []                       # List of stocks to exclude from trading (e.g. ["AAPL", "TSLA", "AMZN"])
+WATCHLIST_NAMES = ["My First List"]         # Watchlist names from your Robinhood account
+WATCHLIST_OVERVIEW_LIMIT = 10               # Number of stocks to process in decision-making (e.g. 20)
+PORTFOLIO_LIMIT = 10                        # Number of stocks to hold in the portfolio
+MIN_SELLING_AMOUNT_USD = 1.0                # Minimum sell amount in USD (False - disable setting)
+MAX_SELLING_AMOUNT_USD = 10.0               # Maximum sell amount in USD (False - disable setting)
+MIN_BUYING_AMOUNT_USD = 1.0                 # Minimum buy amount in USD (False - disable setting)
+MAX_BUYING_AMOUNT_USD = 10.0                # Maximum buy amount in USD (False - disable setting)
+
+# OpenAI config params
+OPENAI_MODEL_NAME = "gpt-4o-mini"           # OpenAI model name
