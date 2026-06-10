@@ -1,3 +1,4 @@
+import os
 import time
 from datetime import datetime
 import json
@@ -338,14 +339,22 @@ async def main():
         await asyncio.sleep(run_interval_seconds)
 
 
+def _auto_confirm_enabled():
+    return os.getenv("AUTO_CONFIRM", "").lower() in ("1", "true", "yes")
+
+
 # Run the main function
 if __name__ == '__main__':
     if not OPENAI_API_KEY:
         logger.error("OPENAI_API_KEY is not set. Copy .env.example to .env and add your key.")
         exit(1)
 
-    confirm = input(f"Are you sure you want to run the bot in {MODE} mode? (yes/no): ")
-    if confirm.lower() != "yes":
-        logger.warning("Exiting the bot...")
-        exit()
+    if not _auto_confirm_enabled():
+        confirm = input(f"Are you sure you want to run the bot in {MODE} mode? (yes/no): ")
+        if confirm.lower() != "yes":
+            logger.warning("Exiting the bot...")
+            exit()
+    else:
+        logger.warning(f"Running in {MODE} mode with AUTO_CONFIRM enabled (unattended deployment).")
+
     asyncio.run(main())

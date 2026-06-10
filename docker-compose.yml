@@ -1,0 +1,11 @@
+services:
+  trading-bot:
+    build: .
+    container_name: robinhood-ai-trading-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./.robinhood_mcp_tokens.json:/app/.robinhood_mcp_tokens.json
+    ports:
+      - "8765:8765"

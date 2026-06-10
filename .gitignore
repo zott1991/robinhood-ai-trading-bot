@@ -162,5 +162,4 @@ cython_debug/
 .idea/
 
 # User data
-config.py
 .robinhood_mcp_tokens.json

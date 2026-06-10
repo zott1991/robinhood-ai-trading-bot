@@ -271,6 +271,22 @@ Start the bot with:
    python main.py
    ```
 
+### Continuous Deployment (Live Trading)
+The bot defaults to **auto mode** for live trading in your Agentic account. Set `AUTO_CONFIRM=true` in `.env` to skip the startup prompt for unattended runs.
+
+**Docker (recommended for 24/7):**
+```sh
+docker compose up -d --build
+docker compose logs -f
+```
+
+**Windows (foreground):**
+```powershell
+.\scripts\run.ps1
+```
+
+Before deploying live, authenticate Robinhood MCP locally (`python scripts/auth_robinhood.py`) so `.robinhood_mcp_tokens.json` exists. Mount or keep that file alongside the bot for token refresh.
+
 ## ⚠️ Disclaimer
 Please note: This bot is designed solely for educational purposes.
 Trading stocks involves significant risks, and you should only invest money you can afford to lose.
